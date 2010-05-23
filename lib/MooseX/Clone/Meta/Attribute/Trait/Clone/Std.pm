@@ -10,17 +10,15 @@ requires qw(clone_value_data);
 sub clone_value {
     my ( $self, $target, $proto, %args ) = @_;
 
-	if ( exists $args{init_arg} ) {
-		$self->set_value( $target, $args{init_arg} );
-	} else {
-		return unless $self->has_value($proto);
+    if ( exists $args{init_arg} ) {
+        $self->set_value( $target, $args{init_arg} );
+    } else {
+        return unless $self->has_value($proto);
 
-		my $clone = $self->clone_value_data( scalar($self->get_value($proto)), %args );
+        my $clone = $self->clone_value_data( scalar($self->get_value($proto)), %args );
 
-		$self->set_value( $target, $clone );
-	}
+        $self->set_value( $target, $clone );
+    }
 }
 
-__PACKAGE__
-
-__END__
+__PACKAGE__;

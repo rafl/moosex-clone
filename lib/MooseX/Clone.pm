@@ -1,9 +1,9 @@
 #!/usr/bin/perl
 
 package MooseX::Clone;
-use Moose::Role;
+# ABSTRACT: grained cloning support for L<Moose> objects.
 
-our $VERSION = "0.04";
+use Moose::Role;
 
 use Hash::Util::FieldHash::Compat qw(idhash);
 
@@ -58,15 +58,7 @@ sub clone_attribute {
     $attr->clone_value( $self, $proto, %args );
 }
 
-__PACKAGE__
-
-__END__
-
-=pod
-
-=head1 NAME
-
-MooseX::Clone - Fine grained cloning support for L<Moose> objects.
+__PACKAGE__;
 
 =head1 SYNOPSIS
 
@@ -133,11 +125,7 @@ Specifies attributes that should be skipped entirely while cloning.
 
 =back
 
-=head1 METHODS
-
-=over 4
-
-=item clone %params
+=method clone %params
 
 Returns a clone of the object.
 
@@ -151,7 +139,6 @@ attribute does not self-clone then the param is used normally by
 L<Class::MOP::Class/clone_object>, that is it will simply shadow the previous
 value, and does not have to be an array or hash reference.
 
-=back
 
 =head1 TODO
 
@@ -161,19 +148,5 @@ will still do the right thing.
 =head1 THANKS
 
 clkao made the food required to write this module
-
-=head1 VERSION CONTROL
-
-L<http://code2.0beta.co.uk/moose/svn/>. Ask on #moose for commit bits.
-
-=head1 AUTHOR
-
-Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
-
-=head1 COPYRIGHT
-
-    Copyright (c) 2008 Yuval Kogman. All rights reserved
-    This program is free software; you can redistribute
-    it and/or modify it under the same terms as Perl itself.
 
 =cut

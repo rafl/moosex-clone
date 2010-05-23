@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 
 package MooseX::Clone::Meta::Attribute::Trait::Copy;
+# ABSTRACT: Simple copying of arrays and hashes for MooseX::Clone
+
 use Moose::Role;
 
 use Carp qw(croak);
@@ -35,16 +37,7 @@ sub _copy_ref {
     }
 }
 
-__PACKAGE__
-
-__END__
-
-=pod
-
-=head1 NAME
-
-MooseX::Clone::Meta::Attribute::Trait::Copy - Simple copying of arrays and
-hashes for L<MooseX::Clone>
+__PACKAGE__;
 
 =head1 SYNOPSIS
 
@@ -62,5 +55,3 @@ This is both simpler and faster when you don't need a real deep copy of the
 entire structure, and probably more correct.
 
 =cut
-
-

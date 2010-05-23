@@ -7,6 +7,4 @@ use namespace::clean -except => [qw(meta)];
 
 requires "clone_value";
 
-__PACKAGE__
-
-__END__
+__PACKAGE__;

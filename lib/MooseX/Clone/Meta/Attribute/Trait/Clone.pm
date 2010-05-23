@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 
 package MooseX::Clone::Meta::Attribute::Trait::Clone;
+#ABSTRACT: Moose::Meta::Attribute trait for deeply cloning attributes
+
 use Moose::Role;
 
 use Carp qw(croak);
@@ -102,18 +104,9 @@ sub clone_any_value {
     $self->clone_visitor->visit($value);
 }
 
-__PACKAGE__
-
-__END__
-
-=pod
+__PACKAGE__;
 
 =encoding utf8
-
-=head1 NAME
-
-MooseX::Clone::Meta::Attribute::Trait::Clone - The L<Moose::Meta::Attribute>
-trait for deeply cloning attributes.
 
 =head1 SYNOPSIS
 
@@ -139,11 +132,7 @@ Deriving this role for your own cloning purposes is encouraged.
 This will allow your fine grained cloning semantics to interact with
 L<MooseX::Clone> in the Right™ way.
 
-=head1 ATTRIBUTES
-
-=over 4
-
-=item clone_only_objects
+=attr clone_only_objects
 
 Whether or not L<Data::Visitor> should be used to clone arbitrary structures.
 Objects found in these structures will be cloned using L<clone_object_value>.
@@ -153,13 +142,13 @@ If true then non object values will be copied over in shallow cloning semantics
 
 Defaults to false (all reference will be cloned).
 
-=item clone_visitor_config
+=attr clone_visitor_config
 
 A hash ref used to construct C<clone_visitor>. Defaults to the empty ref.
 
 This can be used to alter the cloning behavior for non object values.
 
-=item clone_visitor
+=attr clone_visitor
 
 The L<Data::Visitor::Callback> object that will be used to clone.
 
@@ -170,17 +159,11 @@ retaining magic.
 Only used if C<clone_only_objects> is false and the value of the attribute is
 not an object.
 
-=back
-
-=head1 METHODS
-
-=over 4
-
-=item clone_value $target, $proto, %args
+=method clone_value $target, $proto, %args
 
 Clones the value the attribute encapsulates from C<$proto> into C<$target>.
 
-=item clone_value_data $value, %args
+=method clone_value_data $value, %args
 
 Does the actual cloning of the value data by delegating to a C<clone> method on
 the object if any.
@@ -191,17 +174,15 @@ If the value is not an object then it will not be cloned.
 
 In the future support for deep cloning of simple refs will be added too.
 
-=item clone_object_value $object, %args
+=method clone_object_value $object, %args
 
 This is the actual workhorse of C<clone_value_data>.
 
-=item clone_any_value $value, %args
+=method clone_any_value $value, %args
 
 Uses C<clone_visitor> to clone all non object values.
 
 Called from C<clone_value_data> if the value is not an object and
 C<clone_only_objects> is false.
-
-=back
 
 =cut
